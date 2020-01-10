@@ -17,6 +17,7 @@ function setTime() {
             clearInterval(timerInterval);
             console.log("time ended")
             //call game over function
+            sendMessage ();
         }
 
         secondsLeft--;
@@ -24,10 +25,11 @@ function setTime() {
     }, 1000)
 }
 
-
+//function sendMessage() {
+  //Show score and game over
+//}
 
 function displayQuestion (){
-
     //clear out qbox
     var title = questions[index].title;
     console.log(title);
@@ -51,9 +53,12 @@ function checkAnswer(event){
     //console.log(event.target.textContent)
     if(questions[index].answer === event.target.textContent){
         score++;
+        alert("Correct!")
+        console.log (score)
     } else {
         //secondsLeft = secondsLeft - 15;
         secondsLeft -= 15;
+        alert("Wrong. -15 seconds")
     }
     index++
     //if else check if next question is there, else 
