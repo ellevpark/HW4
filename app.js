@@ -1,5 +1,4 @@
 // TODO: 
-// Have end of game score = to the # of seconds left 
 // Ask the user for their initials 
 // Store the score and the user's initials in the local storage 
 // localStorage.setItem ("score"); 
@@ -37,11 +36,11 @@ function setTime() {
 }
 // create a function to display questions one at a time 
 function displayQuestion (){
-    if(!questions[index]) {
-        displayGameOver()
-
-    } else {
-          
+            if(!questions[index]) {
+                displayGameOver()
+        
+            } else {
+        
         var qBox = document.querySelector("#questionBox");
         qBox.textContent = "";
         var title = questions[index].title;
@@ -56,10 +55,10 @@ function displayQuestion (){
             button.textContent = choice;
             button.addEventListener("click", checkAnswer)
             qBox.appendChild(button);
-        })
 
-    }
-}
+        });
+        }
+        }   
 // create a function that will check the answer to see if it is correct or incorrect
 function checkAnswer(event){
     var answerBox= document.getElementById("answerBox");
@@ -72,24 +71,30 @@ function checkAnswer(event){
         secondsLeft -= 2;
         answerBox.innerHTML= "Incorrect";
     }
-        
     displayQuestion()
+
+};
+        
+
+function storeScores() {
+  var highScore = localStorage.setItem("score");
+
+  if (score === null) {
+    return;
+  }
+
 }
-// TODO: function storeScores() {
-//   var highScore = localStorage.getItem("score");
-
-//   if (score === null) {
-//     return;
-//   }
-
-// }
 //I DONT THINK THIS WORKS..
 document.getElementById("start").addEventListener("click", gameStart)
 
 //TODO:Allow user to "View Highscore" & "Time" value set at 0
+// Have end of game score = to the # of seconds left 
 
 function displayGameOver() {
     alert ("Game Over");
     clearInterval(timerInterval);
     score = secondsLeft;
-}
+    document.getElementById("scoreBox").textContent("Score: "+ score);
+    console.log (scoreBox);
+};
+      
